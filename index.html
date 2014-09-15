@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="mapnote.css">
   </head>
   <body>
-    <google-map center="map.center" zoom="map.zoom"></google-map>
+    <div ng-controller="MapController">
+      <google-map center="map.center" zoom="map.zoom"></google-map>
+    </div>
     <div ng-controller="NoteController">
       <div ng-repeat="note in list" ng-click="removeFromList()">
         {{$index + 1}} {{note.content}}
