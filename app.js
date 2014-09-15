@@ -13,7 +13,7 @@ app.controller('NoteController', function($scope){
   };
 
   $scope.removeFromList = function(){
-
+    $scope.list.splice(this.$index, 1);
   };
 
 

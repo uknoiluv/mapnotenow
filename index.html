@@ -6,8 +6,8 @@
   </head>
   <body>
     <div ng-controller="NoteController">
-      <div ng-repeat="note in list">
-        {{note.content}}
+      <div ng-repeat="note in list" ng-click="removeFromList()">
+        {{$index + 1}} {{note.content}}
       </div>
       <form ng-submit="addToList()">
         <div>
