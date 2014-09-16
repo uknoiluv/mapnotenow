@@ -1,12 +1,23 @@
 var app = angular.module('mapnote', ['google-maps']);
 
-app.controller('MapController', function($scope){
+app.controller('MapController', function($scope, $log){
   $scope.map = {
     center: {
       latitude: 49,
       longitude: -73
     },
-    zoom: 8
+    zoom: 8,
+    events: {
+      click: function(maps, eventName, args){
+        $log.log(maps);
+        $log.log(eventName);
+        $log.log('args', args);
+        $log.log(args[0].latLng);
+        $log.log(args[0].latLng.lat());
+        $log.log(args[0].latLng.lng());
+        
+      }
+    }
   };
   $scope.marker = {
     id: 0,
