@@ -7,7 +7,22 @@ app.controller('MapController', function($scope){
       longitude: -73
     },
     zoom: 8
-  }
+  };
+  $scope.marker = {
+    id: 0,
+    coords: {
+      latitude: 49,
+      longitude: -73
+    },
+    options: {draggable: true},
+    events: {
+      dragend: function(marker, eventName, args) {
+        console.log('marker dragend');
+        console.log(marker.getPosition().lat());
+        console.log(marker.getPosition().lng());
+      }
+    }
+  };  
 });
 
 app.controller('NoteController', function($scope){
