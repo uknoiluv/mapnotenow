@@ -8,14 +8,18 @@ app.controller('MapController', function($scope, $log){
     },
     zoom: 8,
     events: {
-      click: function(maps, eventName, args){
-        $log.log(maps);
-        $log.log(eventName);
-        $log.log('args', args);
-        $log.log(args[0].latLng);
-        $log.log(args[0].latLng.lat());
-        $log.log(args[0].latLng.lng());
-        
+      click: function(maps, eventName, args){                                                                                                              
+        // $log.log(eventName);
+        // $log.log('args', args);
+        // $log.log(args[0].latLng);
+        // $log.log('lat', args[0].latLng.lat());
+        // $log.log('lng', args[0].latLng.lng());
+        $scope.marker.coords = {
+          latitude: args[0].latLng.lat(),
+          longitude: args[0].latLng.lng()
+        }
+        $scope.$apply();
+        // console.log('$scope.marker.coords', $scope.marker.coords);
       }
     }
   };
