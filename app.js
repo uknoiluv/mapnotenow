@@ -14,11 +14,12 @@ app.controller('MapController', function($scope, $log){
         // $log.log(args[0].latLng);
         // $log.log('lat', args[0].latLng.lat());
         // $log.log('lng', args[0].latLng.lng());
-        $scope.marker.coords = {
-          latitude: args[0].latLng.lat(),
-          longitude: args[0].latLng.lng()
-        }
-        $scope.$apply();
+        $scope.$apply(function(){
+          $scope.marker.coords = {
+            latitude: args[0].latLng.lat(),
+            longitude: args[0].latLng.lng()
+          }
+        });
         // console.log('$scope.marker.coords', $scope.marker.coords);
       }
     }
