@@ -8,10 +8,13 @@ app.controller('MapNoteController', function($scope){
       id: i,
       options: {
         draggable: false,
-        latitude: $scope.marker.coords.latitude,
-        longitude: $scope.marker.coords.longitude,
-        title: 'm' + i
-      }
+        // latitude: $scope.marker.coords.latitude,
+        // longitude: $scope.marker.coords.longitude,
+      },
+      title: $scope.listInput,
+      show: true,
+      latitude: $scope.marker.coords.latitude,
+      longitude: $scope.marker.coords.longitude
     }
   };
 
@@ -54,14 +57,29 @@ app.controller('MapNoteController', function($scope){
   };
 
   $scope.inputMarkers = [{
-    id: 11,
-    options: {
-      draggable: false,
-      latitude: 49.1,
-      longitude: -72,
-      title: 'm1'
-    }
-  }];
+      id: 20,
+      options: {
+        draggable: false,
+        // latitude: $scope.marker.coords.latitude,
+        // longitude: $scope.marker.coords.longitude,
+      },
+      title: 'hahahahahahha',
+      show: true,
+      latitude: 49,
+      longitude: -73
+    },
+    {
+      id: 21,
+      options: {
+        draggable: false,
+        // latitude: $scope.marker.coords.latitude,
+        // longitude: $scope.marker.coords.longitude,
+      },
+      title: 'skldfjklsdjflksa',
+      show: true,
+      latitude: 49.2,
+      longitude: -73.1
+    }];
 
   $scope.list = [];
 
