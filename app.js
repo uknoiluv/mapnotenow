@@ -1,6 +1,20 @@
 var app = angular.module('mapnote', ['google-maps']);
 
-app.controller('MapController', function($scope){
+app.controller('MapNoteController', function($scope){
+
+  var i = 0;
+  var createMarker = function(){
+    return {
+      id: i,
+      options: {
+        draggable: false,
+        latitude: $scope.marker.coords.latitude,
+        longitude: $scope.marker.coords.longitude,
+        title: 'm' + i
+      }
+    }
+  };
+
   $scope.map = {
     center: {
       latitude: 49,
@@ -14,13 +28,14 @@ app.controller('MapController', function($scope){
           $scope.marker.coords = {
             latitude: args[0].latLng.lat(),
             longitude: args[0].latLng.lng()
-          }
+          };
         });
       }
     }
   };
+
   $scope.marker = {
-    id: 0,
+    id: i,
     coords: {
       latitude: 49,
       longitude: -73
@@ -36,20 +51,31 @@ app.controller('MapController', function($scope){
         console.log(marker.getPosition().lng());
       }
     }
-  };  
-});
+  };
 
-app.controller('NoteController', function($scope){
+  $scope.inputMarkers = [{
+    id: 11,
+    options: {
+      draggable: false,
+      latitude: 49.1,
+      longitude: -72,
+      title: 'm1'
+    }
+  }];
+
   $scope.list = [];
 
   $scope.addToList = function(){
-    $scope.list.push({content: $scope.listInput});
-    $scope.listInput = '';
+      i++;
+      $scope.marker.options.visible = false;
+      $scope.inputMarkers.push(createMarker());
+      $scope.list.push({content: $scope.listInput});
+      $scope.listInput = '';
+      console.log('$scope.inputMarkers', $scope.inputMarkers);
   };
 
   $scope.removeFromList = function(){
     $scope.list.splice(this.$index, 1);
   };
-
 
 });
