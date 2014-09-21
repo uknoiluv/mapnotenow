@@ -13,8 +13,10 @@ app.controller('MapNoteController', function($scope){
       },
       title: $scope.listInput,
       show: true,
-      latitude: $scope.marker.coords.latitude,
-      longitude: $scope.marker.coords.longitude
+      coords:{
+        latitude: $scope.marker.coords.latitude,
+        longitude: $scope.marker.coords.longitude
+      }
     }
   };
 
@@ -65,8 +67,10 @@ app.controller('MapNoteController', function($scope){
       },
       title: 'hahahahahahha',
       show: true,
-      latitude: 49,
-      longitude: -73
+      coords: {
+        latitude: 49,
+        longitude: -73
+      }
     },
     {
       id: 21,
@@ -77,8 +81,10 @@ app.controller('MapNoteController', function($scope){
       },
       title: 'skldfjklsdjflksa',
       show: true,
-      latitude: 49.2,
-      longitude: -73.1
+      coords: {
+        latitude: 49.2,
+        longitude: -73.1
+      }
     }];
 
   $scope.list = [];
