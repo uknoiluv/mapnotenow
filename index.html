@@ -15,12 +15,16 @@
         <markers models="inputMarkers" coords="'coords'" options="'options'">
         </markers>
 
-          <window ng-repeat="marker in inputMarkers" coords="marker.coords" show="'show'">
-            <div>{{marker.title}}</div>
+          <window ng-repeat="markers in inputMarkers" coords="markers.coords" show="'show'">
+            <div>{{markers.title}}</div>
           </window>
 
-        <marker idKey="marker.id" coords="marker.coords" options="marker.options" events="marker.events">
+        <marker coords="marker.coords" options="marker.options" events="marker.events" idKey="marker.id">
+          <!-- <window show="marker.show">
+            <div>{{listInput}}</div>
+          </window> -->
         </marker>
+
       </google-map>    
       <div>
         <div ng-repeat="note in list" ng-click="removeFromList()">

@@ -29,7 +29,9 @@ app.controller('MapNoteController', function($scope){
     events: {
       click: function(maps, eventName, args){                                                                                                              
         $scope.$apply(function(){
-          $scope.marker.visible = true;
+          console.log('hit');
+          $scope.marker.options.visible = true;
+          $scope.marker.show = true;
           $scope.marker.coords = {
             latitude: args[0].latLng.lat(),
             longitude: args[0].latLng.lng()
@@ -48,44 +50,55 @@ app.controller('MapNoteController', function($scope){
     options: {
       draggable: true,
       visible: false
+      // visible: true
     },
     events: {
       dragend: function(marker, eventName, args) {
-        console.log('marker dragend');
-        console.log(marker.getPosition().lat());
-        console.log(marker.getPosition().lng());
+        $scope.$apply(function(){
+          console.log('marker dragend');
+          console.log(marker.getPosition().lat());
+          console.log(marker.getPosition().lng());
+        });
       }
-    }
+      // click: function(marker, eventName, args){
+      //   console.log('x');
+      //   console.log('marker', marker);
+      //   console.log('eventName', eventName);
+      //   console.log('args', args);
+      // }
+    },
+    show: false
   };
 
-  $scope.inputMarkers = [{
-      id: 20,
-      options: {
-        draggable: false,
-        // latitude: $scope.marker.coords.latitude,
-        // longitude: $scope.marker.coords.longitude,
-      },
-      title: 'hahahahahahha',
-      show: true,
-      coords: {
-        latitude: 49,
-        longitude: -73
-      }
-    },
-    {
-      id: 21,
-      options: {
-        draggable: false,
-        // latitude: $scope.marker.coords.latitude,
-        // longitude: $scope.marker.coords.longitude,
-      },
-      title: 'skldfjklsdjflksa',
-      show: true,
-      coords: {
-        latitude: 49.2,
-        longitude: -73.1
-      }
-    }];
+  // $scope.inputMarkers = [{
+  //     id: 20,
+  //     options: {
+  //       draggable: false,
+  //       // latitude: $scope.marker.coords.latitude,
+  //       // longitude: $scope.marker.coords.longitude,
+  //     },
+  //     title: 'hahahahahahha',
+  //     show: true,
+  //     coords: {
+  //       latitude: 49,
+  //       longitude: -73
+  //     }
+  //   },
+  //   {
+  //     id: 21,
+  //     options: {
+  //       draggable: false,
+  //       // latitude: $scope.marker.coords.latitude,
+  //       // longitude: $scope.marker.coords.longitude,
+  //     },
+  //     title: 'skldfjklsdjflksa',
+  //     show: true,
+  //     coords: {
+  //       latitude: 49.2,
+  //       longitude: -73.1
+  //     }
+  //   }];
+  $scope.inputMarkers = [];
 
   $scope.list = [];
 
