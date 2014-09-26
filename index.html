@@ -21,21 +21,29 @@
 
         <marker coords="marker.coords" options="marker.options" events="marker.events" idKey="marker.id">
           <!-- <window show="marker.show">
-            <div>{{listInput}}</div>
+            <form ng-submit="addToList()">
+              <div>
+                <input type="text" placeholder="memo" ng-model="listInput">
+                <input type="submit" value="add">
+              </div>
+            </form>
           </window> -->
         </marker>
 
       </google-map>    
       <div>
-        <div ng-repeat="note in list" ng-click="removeFromList()">
-          {{$index + 1}} {{note.content}}
-        </div>
+        <!-- <div ng-repeat="note in list" ng-click="removeFromList()"> -->
+        <div>{{message}}</div>
         <form ng-submit="addToList()">
           <div>
-            <input type="text" placeholder="name" ng-model="listInput">
+            <input type="text" placeholder="note" ng-model="listInput">
             <input type="submit" value="add">
           </div>
         </form>
+
+        <div ng-repeat="marker in inputMarkers" ng-click="removeFromList()">
+          {{$index + 1}} {{marker.title}}
+        </div>
       </div>
     </div>
   </body>

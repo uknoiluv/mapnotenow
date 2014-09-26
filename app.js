@@ -102,17 +102,28 @@ app.controller('MapNoteController', function($scope){
 
   $scope.list = [];
 
+  $scope.listInput = '';
+
+  $scope.message = '';
+
   $scope.addToList = function(){
+    if($scope.marker.show){
+      $scope.message = '';
       i++;
+      $scope.marker.show = false;
       $scope.marker.options.visible = false;
       $scope.inputMarkers.push(createMarker());
-      $scope.list.push({content: $scope.listInput});
+      // $scope.list.push({content: $scope.listInput});
+      console.log('$scope.list', $scope.list);
       $scope.listInput = '';
       console.log('$scope.inputMarkers', $scope.inputMarkers);
+    }else{
+      $scope.message = 'click on the map first';
+    }
   };
 
   $scope.removeFromList = function(){
-    $scope.list.splice(this.$index, 1);
+    $scope.inputMarkers.splice(this.$index, 1);
   };
 
 });
