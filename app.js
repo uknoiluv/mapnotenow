@@ -4,18 +4,19 @@ app.controller('MapNoteController', function($scope){
 
   var i = 0;
   var createMarker = function(){
+    var lat = $scope.marker.coords.latitude;
+    var lng = $scope.marker.coords.longitude;
+    $scope.polyline.path.push({latitude: lat, longitude: lng});
     return {
       id: i,
       options: {
         draggable: false,
-        // latitude: $scope.marker.coords.latitude,
-        // longitude: $scope.marker.coords.longitude,
       },
       title: $scope.listInput,
       show: true,
       coords:{
-        latitude: $scope.marker.coords.latitude,
-        longitude: $scope.marker.coords.longitude
+        latitude: lat,
+        longitude: lng
       }
     }
   };
@@ -106,6 +107,25 @@ app.controller('MapNoteController', function($scope){
 
   $scope.message = '';
 
+  $scope.polyline = {
+    path: [],
+    stroke: {
+      color: '#6060FB',
+      weight: 3
+    },
+    editable: false,
+    geodesic: false,
+    draggable: false,
+    visible: true,
+    icons: [{
+      icon: {
+          path: google.maps.SymbolPath.FORWARD_OPEN_ARROW
+      },
+      offset: '25px',
+      repeat: '50px'
+    }]
+  };
+
   $scope.addToList = function(){
     if($scope.marker.show){
       $scope.message = '';
@@ -113,8 +133,8 @@ app.controller('MapNoteController', function($scope){
       $scope.marker.show = false;
       $scope.marker.options.visible = false;
       $scope.inputMarkers.push(createMarker());
+      console.log('$scope.polyline.path', $scope.polyline.path);
       // $scope.list.push({content: $scope.listInput});
-      console.log('$scope.list', $scope.list);
       $scope.listInput = '';
       console.log('$scope.inputMarkers', $scope.inputMarkers);
     }else{

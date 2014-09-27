@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="mapnote.css">
   </head>
   <body>
-    <h2>mapnotenow<h2>
+    <h2>mapnotenow</h2>
     <div ng-controller="MapNoteController">
       <google-map center="map.center" zoom="map.zoom" draggable="true" events="map.events">
         <markers models="inputMarkers" coords="'coords'" options="'options'">
@@ -29,6 +29,9 @@
             </form>
           </window> -->
         </marker>
+
+        <polyline ng-if="polyline.path.length > 1" path='polyline.path' stroke='polyline.stroke' visible='polyline.visible' geodesic='polyline.geodesic' fit='false' editable='polyline.editable' draggable='polyline.draggable' icons='polyline.icons'>
+        </polyline>
 
       </google-map>    
       <div>
