@@ -5,11 +5,18 @@
     <script src="./bower_components/lodash/dist/lodash.underscore.min.js"></script>
     <script src="./bower_components/angular/angular.min.js"></script>
     <script src="./bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="app.js"></script>
+    <script src="routeConfig.js"></script>
     <link rel="stylesheet" type="text/css" href="mapnote.css">
   </head>
   <body>
     <h2>mapnotenow</h2>
+          
+      <a ui-sref='dashboard'>dashboard</a>
+      <a ui-sref='login'>login</a>
+      <a ui-sref='signup'>signup</a>
+
     <div ng-controller="MapNoteController">
       <google-map center="map.center" zoom="map.zoom" draggable="true" events="map.events">
         <markers models="inputMarkers" coords="'coords'" options="'options'">

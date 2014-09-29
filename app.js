@@ -1,4 +1,4 @@
-var app = angular.module('mapnote', ['google-maps']);
+var app = angular.module('mapnote', ['google-maps', 'ui.router']);
 
 app.controller('MapNoteController', function($scope){
 
