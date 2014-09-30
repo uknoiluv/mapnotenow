@@ -23,7 +23,7 @@ exports.handler = function(request, response){
     // });
   // }
 
-  path.exists(pathName, function(exists){
+  fs.exists(pathName, function(exists){
     if(exists){
       fs.readFile(pathName, function(err, content){
         console.log('pathName', pathName);
@@ -46,7 +46,7 @@ exports.handler = function(request, response){
           }else if(pathExt === '.css'){
             send(content, 'Content-Type', 'text/css')
           }else{
-            send(500);
+            send(content, 'Content-Type', 'text/javascript')
           }
         }
       });
