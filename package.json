@@ -1,0 +1,12 @@
+{
+  "name": "mapnotenow",
+  "version": "0.0.1",
+  "description": "taking note on the map",
+  "main": "server.js",
+  "dependencies": {
+    "express": "4.9.5",
+    "express-session": "^1.7.2",
+    "body-parser": "^1.5.2",
+    "mongodb": "^1.4.2"
+  }
+}
