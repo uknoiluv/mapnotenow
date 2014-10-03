@@ -6,11 +6,10 @@ var exports = module.exports = {};
 
 exports.handler = function(request, response){
   var pathName = '.' + request.url;
-
+  console.log(pathName);
   if(pathName === './'){
-    pathName = './index.html';
+    pathName = './public/index.html';
   }
-
   fs.exists(pathName, function(exists){
     if(exists){
       fs.readFile(pathName, function(err, content){
@@ -39,7 +38,6 @@ exports.handler = function(request, response){
       response.writeHead(400);
       response.end();
     }
-
   });
 
 }
