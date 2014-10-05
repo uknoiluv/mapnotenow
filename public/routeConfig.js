@@ -5,17 +5,17 @@ app.config(function($stateProvider, $urlRouterProvider){
   $stateProvider
     .state('login', {
       url: '/login',
-      templateUrl: './public/partial/login.html',
+      templateUrl: './partial/login.html',
       controller: 'MapNoteController'
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: './public/partial/signup.html',
+      templateUrl: './partial/signup.html',
       controller: 'MapNoteController'
     })
     .state('dashboard', {
       url: '/dashboard',
-      templateUrl: './public/partial/dashboard.html',
+      templateUrl: './partial/dashboard.html',
       controller: 'MapNoteController'
     });
 
