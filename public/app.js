@@ -148,13 +148,13 @@ app.controller('MapNoteController', function($scope){
 
 });
 
-app.directive('myTest', function(){
-  return {
-    link: function(scope, element, attr){
-      element.css('background-color', 'yellow');
-      element.on('click', function(){
-        element.css('background-color', 'transparent')
-      });
-    }
-  }
-})
+// app.directive('myTest', function(){
+//   return {
+//     link: function(scope, element, attr){
+//       element.css('background-color', 'yellow');
+//       element.on('click', function(){
+//         element.css('background-color', 'transparent')
+//       });
+//     }
+//   }
+// })

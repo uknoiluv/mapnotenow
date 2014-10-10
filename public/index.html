@@ -12,10 +12,10 @@
   </head>
   <body>
     <h2>mapnotenow</h2>
-      <div ui-view></div>
-      <a ui-sref='dashboard'>dashboard</a>
+      <!-- <a ui-sref='dashboard'>dashboard</a> -->
       <a ui-sref='login'>login</a>
       <a ui-sref='signup'>signup</a>
+      <div ui-view></div>
 
     <div ng-controller="MapNoteController">
       <google-map center="map.center" zoom="map.zoom" draggable="true" events="map.events">
@@ -57,6 +57,6 @@
       </div>
     </div>
 
-    <div my-test id="test" style="width:100px;height:100px;"> test </div>
+    <!-- <div my-test id="test" style="width:100px;height:100px;"> test </div> -->
   </body>
 </html>
