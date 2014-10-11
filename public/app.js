@@ -148,6 +148,17 @@ app.controller('MapNoteController', function($scope){
 
 });
 
+app.controller('SignupController', function($scope, $http){
+  $scope.login = function(username, password){
+    var userData = {username: username, password: password};
+    $http({method: 'POST', url: './login', data: userData}).success(function(data, status){
+      console.log('data', data, 'status', status);
+    }).error(function(data, status){
+      console.log('data', data, 'status', status);
+    });
+  }
+})
+
 // app.directive('myTest', function(){
 //   return {
 //     link: function(scope, element, attr){
