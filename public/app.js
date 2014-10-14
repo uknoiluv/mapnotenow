@@ -149,9 +149,9 @@ app.controller('MapNoteController', function($scope){
 });
 
 app.controller('SignupController', function($scope, $http){
-  $scope.login = function(username, password){
+  $scope.signup = function(username, password){
     var userData = {username: username, password: password};
-    $http({method: 'POST', url: './login', data: userData}).success(function(data, status){
+    $http({method: 'POST', url: './signup', data: userData}).success(function(data, status){
       console.log('data', data, 'status', status);
     }).error(function(data, status){
       console.log('data', data, 'status', status);
