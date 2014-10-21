@@ -2,6 +2,7 @@
 var fs = require('fs');
 var path = require('path');
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 
 var exports = module.exports = {};
 
@@ -9,8 +10,10 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
   username: String,
   password: String,
-  salt: String
+  salt: String,
+  path: []
 });
+
 var User = mongoose.model('User', UserSchema);
 
 
@@ -54,6 +57,10 @@ var User = mongoose.model('User', UserSchema);
 
 exports.signup = function(user){
   console.log('user', user);
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(user.password, salt);
+  user.password = hash;
+  user.salt = salt;
   var newUser = new User(user);
   newUser.save(function(err, user){
     if(err){
