@@ -61,11 +61,25 @@ exports.signup = function(user){
   var hash = bcrypt.hashSync(user.password, salt);
   user.password = hash;
   user.salt = salt;
-  var newUser = new User(user);
-  newUser.save(function(err, user){
-    if(err){
-      console.log('error');
-    }
-    console.log('saved inside DB');
-  });  
+  console.log('user', user);
+  // var newUser = new User(user);
+  // newUser.save(function(err, user){
+  //   if(err){
+  //     console.log('error');
+  //   }
+  //   console.log('saved inside DB');
+  // });  
+};
+
+exports.login = function(user){
+  var username = user.username;
+  var password = user.password;
+  var salt = bcrypt.genSaltSync(10);
+  var hash = bcrypt.hashSync(password, salt);
+  // var userObj = db.users.findOne({username: username, password: hash});
+  if(userObj){
+    console.log('hit');
+  }else{
+    res.redirect('login');
+  }
 };
