@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var db = mongoose.connection;
 
 var exports = module.exports = {};
 
@@ -57,29 +58,53 @@ var User = mongoose.model('User', UserSchema);
 
 exports.signup = function(user){
   console.log('user', user);
-  var salt = bcrypt.genSaltSync(10);
-  var hash = bcrypt.hashSync(user.password, salt);
-  user.password = hash;
-  user.salt = salt;
-  console.log('user', user);
-  // var newUser = new User(user);
-  // newUser.save(function(err, user){
-  //   if(err){
-  //     console.log('error');
-  //   }
-  //   console.log('saved inside DB');
-  // });  
+  var salt = bcrypt.genSalt(10, function(err, salt){
+    bcrypt.hash(user.password, salt, function(err, hash){
+      user.password = hash;
+      user.salt = salt;
+      console.log('salt', salt);
+      console.log('hash', hash);
+      console.log('user', user);
+      var newUser = new User(user);
+      newUser.save(function(err, user){
+        if(err){
+          console.log('error');
+        }else{
+          console.log('saved inside DB');
+        }
+      });  
+    });
+  });
+  //var hash = bcrypt.hashSync(user.password, salt);
+    // res.redirect('dashboard');
 };
 
 exports.login = function(user){
+  console.log('hit login');
+  console.log('user', user);
   var username = user.username;
   var password = user.password;
-  var salt = bcrypt.genSaltSync(10);
-  var hash = bcrypt.hashSync(password, salt);
-  // var userObj = db.users.findOne({username: username, password: hash});
-  if(userObj){
-    console.log('hit');
-  }else{
-    res.redirect('login');
-  }
+  var userObj = {};
+  User.findOne({username: username}, function(err, user){
+    console.log('err', err);
+    console.log('user', user);
+    userObj = user;
+    var hash = bcrypt.hashSync(password, userObj.salt);
+    console.log('hash', hash);
+    console.log('userObj.password', userObj.password);
+    // if(hash === userObj.password){
+    //   console.log('login success');
+    // }else{
+    //   console.log('login fail');
+    // }
+    console.log('password', password);
+    bcrypt.compare(password, userObj.password, function(err, res){
+      console.log('err', err, 'res', res);
+      if(res){
+        console.log('login success');
+      }else{
+        console.log('login fail');
+      }
+    })
+  });
 };

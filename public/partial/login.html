@@ -2,9 +2,11 @@
 <h3> 
   login
 </h3>
-<form>
-  <input type="text" placeholder="email"></input>
-  <input type="text" placeholder="password"></input>
-  <button type="button"> Login </button>
+<div>
+<form ng-controller="LoginController">
+  <input type="text" placeholder="username" ng-model="username"></input>
+  <input type="text" placeholder="password" ng-model="password"></input>
+  <button type="button" ng-click="login(username, password)"> Login </button>
   <a ui-sref="signup"> Create account </a>
 </form>
+</div>
